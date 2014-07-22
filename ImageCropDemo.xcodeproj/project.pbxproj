@@ -24,6 +24,11 @@
 		80454C5A1974F139002D9CF8 /* ImageCropDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 80454C591974F139002D9CF8 /* ImageCropDemoTests.m */; };
 		80454C641974F6CB002D9CF8 /* Klein_CropDemo.png in Resources */ = {isa = PBXBuildFile; fileRef = 80454C631974F6CB002D9CF8 /* Klein_CropDemo.png */; };
 		80454C66197502C0002D9CF8 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80454C65197502C0002D9CF8 /* CoreImage.framework */; };
+		8064AEC1197E2F0900FAA72F /* cropAndPostToSocial.m in Sources */ = {isa = PBXBuildFile; fileRef = 8064AEC0197E2F0900FAA72F /* cropAndPostToSocial.m */; };
+		8064AEC3197E32F000FAA72F /* Reward Screen (1).png in Resources */ = {isa = PBXBuildFile; fileRef = 8064AEC2197E32F000FAA72F /* Reward Screen (1).png */; };
+		8064AEC5197E333800FAA72F /* Reward Screen Clipping.png in Resources */ = {isa = PBXBuildFile; fileRef = 8064AEC4197E333800FAA72F /* Reward Screen Clipping.png */; };
+		8064AEC8197E42FC00FAA72F /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = 8064AEC6197E42FC00FAA72F /* facebook.png */; };
+		8064AEC9197E42FC00FAA72F /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 8064AEC7197E42FC00FAA72F /* twitter.png */; };
 		80BB61BC1979333800B90FD8 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80BB61BB1979333800B90FD8 /* Social.framework */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +65,12 @@
 		80454C591974F139002D9CF8 /* ImageCropDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImageCropDemoTests.m; sourceTree = "<group>"; };
 		80454C631974F6CB002D9CF8 /* Klein_CropDemo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Klein_CropDemo.png; sourceTree = "<group>"; };
 		80454C65197502C0002D9CF8 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		8064AEBF197E2F0900FAA72F /* cropAndPostToSocial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cropAndPostToSocial.h; sourceTree = "<group>"; };
+		8064AEC0197E2F0900FAA72F /* cropAndPostToSocial.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = cropAndPostToSocial.m; sourceTree = "<group>"; };
+		8064AEC2197E32F000FAA72F /* Reward Screen (1).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reward Screen (1).png"; sourceTree = "<group>"; };
+		8064AEC4197E333800FAA72F /* Reward Screen Clipping.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Reward Screen Clipping.png"; sourceTree = "<group>"; };
+		8064AEC6197E42FC00FAA72F /* facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook.png; sourceTree = "<group>"; };
+		8064AEC7197E42FC00FAA72F /* twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter.png; sourceTree = "<group>"; };
 		80BB61BB1979333800B90FD8 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -92,6 +103,8 @@
 		80454C1F1974F139002D9CF8 = {
 			isa = PBXGroup;
 			children = (
+				8064AEBF197E2F0900FAA72F /* cropAndPostToSocial.h */,
+				8064AEC0197E2F0900FAA72F /* cropAndPostToSocial.m */,
 				80454C311974F139002D9CF8 /* ImageCropDemo */,
 				80454C531974F139002D9CF8 /* ImageCropDemoTests */,
 				80454C2A1974F139002D9CF8 /* Frameworks */,
@@ -139,6 +152,10 @@
 		80454C321974F139002D9CF8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8064AEC6197E42FC00FAA72F /* facebook.png */,
+				8064AEC7197E42FC00FAA72F /* twitter.png */,
+				8064AEC4197E333800FAA72F /* Reward Screen Clipping.png */,
+				8064AEC2197E32F000FAA72F /* Reward Screen (1).png */,
 				80454C631974F6CB002D9CF8 /* Klein_CropDemo.png */,
 				80454C331974F139002D9CF8 /* ImageCropDemo-Info.plist */,
 				80454C341974F139002D9CF8 /* InfoPlist.strings */,
@@ -243,8 +260,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				80454C641974F6CB002D9CF8 /* Klein_CropDemo.png in Resources */,
+				8064AEC8197E42FC00FAA72F /* facebook.png in Resources */,
+				8064AEC3197E32F000FAA72F /* Reward Screen (1).png in Resources */,
 				80454C421974F139002D9CF8 /* Main_iPad.storyboard in Resources */,
+				8064AEC5197E333800FAA72F /* Reward Screen Clipping.png in Resources */,
 				80454C471974F139002D9CF8 /* Images.xcassets in Resources */,
+				8064AEC9197E42FC00FAA72F /* twitter.png in Resources */,
 				80454C3F1974F139002D9CF8 /* Main_iPhone.storyboard in Resources */,
 				80454C361974F139002D9CF8 /* InfoPlist.strings in Resources */,
 			);
@@ -268,6 +289,7 @@
 				80454C451974F139002D9CF8 /* ViewController.m in Sources */,
 				80454C3C1974F139002D9CF8 /* AppDelegate.m in Sources */,
 				80454C381974F139002D9CF8 /* main.m in Sources */,
+				8064AEC1197E2F0900FAA72F /* cropAndPostToSocial.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

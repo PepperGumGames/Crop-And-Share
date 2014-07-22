@@ -15,14 +15,17 @@
     CGRect gauntletIPhone;
     CGRect swordIPhone;
     CGRect footIPhone;
+    CGRect scoreSheet;
     
     CGRect headIPhoneRetina;
     CGRect chestIPhoneRetina;
     CGRect gauntletIPhoneRetina;
     CGRect swordIPhoneRetina;
     CGRect footIPhoneRetina;
+    CGRect scoreSheetRetina;
     
     CGFloat screenScale;
+    NSString *serviceType;
 }
 
 @end
@@ -45,14 +48,33 @@
     gauntletIPhone = CGRectMake(241, 247, 46, 103);
     swordIPhone = CGRectMake(32, 291, 141, 223);
     footIPhone = CGRectMake(128, 488, 164, 100);
+    scoreSheet = CGRectMake(137, 158, 532, 473);
     
     //multiply non-retina rectangle values by the screen scale
-    headIPhoneRetina = CGRectMake(headIPhone.origin.x*screenScale, headIPhone.origin.y*screenScale, headIPhone.size.width*screenScale, headIPhone.size.height*screenScale);
-    chestIPhoneRetina = CGRectMake(chestIPhone.origin.x*screenScale, chestIPhone.origin.y*screenScale, chestIPhone.size.width*screenScale, chestIPhone.size.height*screenScale);
-    gauntletIPhoneRetina = CGRectMake(gauntletIPhone.origin.x*screenScale, gauntletIPhone.origin.y*screenScale, gauntletIPhone.size.width*screenScale, gauntletIPhone.size.height*screenScale);
-    swordIPhoneRetina = CGRectMake(swordIPhone.origin.x*screenScale, swordIPhone.origin.y*screenScale, swordIPhone.size.width*screenScale, swordIPhone.size.height*screenScale);
-    footIPhoneRetina = CGRectMake(footIPhone.origin.x*screenScale, footIPhone.origin.y*screenScale, footIPhone.size.width*screenScale, footIPhone.size.height*screenScale);
-    
+    headIPhoneRetina = CGRectMake(headIPhone.origin.x*screenScale,
+                                  headIPhone.origin.y*screenScale,
+                                  headIPhone.size.width*screenScale,
+                                  headIPhone.size.height*screenScale);
+    chestIPhoneRetina = CGRectMake(chestIPhone.origin.x*screenScale,
+                                   chestIPhone.origin.y*screenScale,
+                                   chestIPhone.size.width*screenScale,
+                                   chestIPhone.size.height*screenScale);
+    gauntletIPhoneRetina = CGRectMake(gauntletIPhone.origin.x*screenScale,
+                                      gauntletIPhone.origin.y*screenScale,
+                                      gauntletIPhone.size.width*screenScale,
+                                      gauntletIPhone.size.height*screenScale);
+    swordIPhoneRetina = CGRectMake(swordIPhone.origin.x*screenScale,
+                                   swordIPhone.origin.y*screenScale,
+                                   swordIPhone.size.width*screenScale,
+                                   swordIPhone.size.height*screenScale);
+    footIPhoneRetina = CGRectMake(footIPhone.origin.x*screenScale,
+                                  footIPhone.origin.y*screenScale,
+                                  footIPhone.size.width*screenScale,
+                                  footIPhone.size.height*screenScale);
+    scoreSheetRetina = CGRectMake(scoreSheet.origin.x*screenScale,
+                                  scoreSheet.origin.y*screenScale,
+                                  scoreSheet.size.width*screenScale,
+                                  scoreSheet.size.height*screenScale);
 /*
  Dynamically gather screen Dimensions
  CGRect screenBounds = [[UIScreen mainScreen] bounds];
@@ -86,33 +108,33 @@
     CGImageRef mySubimage = CGImageCreateWithImageInRect (ref, clipRegion);
     UIImage *clippedScreenshot = [UIImage imageWithCGImage:mySubimage];
 
-    /* --OPTIONAL-- 
-     Save Image to disk
+    /* --OPTIONAL--
+     Save Image to disk*/
      
-     NSFileManager *fileManager = [[NSFileManager alloc] init];
-     NSURL *picturesFolder = [fileManager URLForDirectory:NSPicturesDirectory
-                                                 inDomain:NSUserDomainMask
-                                        appropriateForURL:nil
-                                                   create:YES
-                                                    error:nil];
-    
-     // A timestamp should be added to the file name otherwise it will continue to overwrite itself
-     NSURL *clippedScreenshotUrl = [picturesFolder
-                            URLByAppendingPathComponent:@"screenshot.png"];
-     NSData *clippedScreenshotData = UIImagePNGRepresentation(clippedScreenshot);
-    
-     if ([clippedScreenshotData writeToURL:clippedScreenshotUrl atomically:YES]){
-        NSLog(@"Successfully saved screenshot to %@", clippedScreenshotUrl);
-     } else {
-        NSLog(@"Failed to save screenshot.");
-     }*/
+//     NSFileManager *fileManager = [[NSFileManager alloc] init];
+//     NSURL *picturesFolder = [fileManager URLForDirectory:NSPicturesDirectory
+//                                                 inDomain:NSUserDomainMask
+//                                        appropriateForURL:nil
+//                                                   create:YES
+//                                                    error:nil];
+//    
+//     // A timestamp should be added to the file name otherwise it will continue to overwrite itself
+//     NSURL *clippedScreenshotUrl = [picturesFolder
+//                            URLByAppendingPathComponent:@"screenshot.png"];
+//     NSData *clippedScreenshotData = UIImagePNGRepresentation(clippedScreenshot);
+//    
+//     if ([clippedScreenshotData writeToURL:clippedScreenshotUrl atomically:YES]){
+//        NSLog(@"Successfully saved screenshot to %@", clippedScreenshotUrl);
+//     } else {
+//        NSLog(@"Failed to save screenshot.");
+//     }
     
     
     /* Post the image to the selected social media account */
     // Tests to see if the user has linked the requested social account with iOS, returns a BOOL
-    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]) {
+    if ([SLComposeViewController isAvailableForServiceType:serviceType]) {
         // Creates an instance of SLCompostViewController for the specified service type
-        SLComposeViewController *socialSheet = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeTwitter];
+        SLComposeViewController *socialSheet = [SLComposeViewController composeViewControllerForServiceType:serviceType];
         // Adds default text and image
         [socialSheet setInitialText:@"Tweeting from within my own app!"];
         [socialSheet addImage: clippedScreenshot];
@@ -133,6 +155,7 @@
 }
 
 - (IBAction)cropHead:(id)sender {
+    serviceType = SLServiceTypeTwitter;
     if (screenScale!=1){
         [self clipScreenImageToRect:headIPhoneRetina];
     }
@@ -142,6 +165,7 @@
 }
 
 - (IBAction)cropChest:(id)sender {
+    serviceType = SLServiceTypeTwitter;
     if (screenScale!=1){
         [self clipScreenImageToRect:chestIPhoneRetina];
     }
@@ -151,6 +175,7 @@
 }
 
 - (IBAction)cropGuantlet:(id)sender {
+    serviceType = SLServiceTypeTwitter;
     if (screenScale!=1){
         [self clipScreenImageToRect:gauntletIPhoneRetina];
     }
@@ -160,6 +185,7 @@
 }
 
 - (IBAction)cropSword:(id)sender {
+    serviceType = SLServiceTypeTwitter;
     if (screenScale!=1){
         [self clipScreenImageToRect:swordIPhoneRetina];
     }
@@ -169,11 +195,30 @@
 }
 
 - (IBAction)cropShoes:(id)sender {
+    serviceType = SLServiceTypeTwitter;
     if (screenScale!=1){
         [self clipScreenImageToRect:footIPhoneRetina];
     }
     else{
         [self clipScreenImageToRect:footIPhone];
+    }
+}
+
+- (IBAction)scoreSheetToFacebook:(id)sender {
+    serviceType = SLServiceTypeFacebook;
+    if (screenScale!=1) {
+        [self clipScreenImageToRect:scoreSheetRetina];
+    } else {
+        [self clipScreenImageToRect:scoreSheet];
+    }
+}
+
+- (IBAction)scoreSheetToTwitter:(id)sender {
+    serviceType = SLServiceTypeTwitter;
+    if (screenScale!=1) {
+        [self clipScreenImageToRect:scoreSheetRetina];
+    } else {
+        [self clipScreenImageToRect:scoreSheet];
     }
 }
 @end

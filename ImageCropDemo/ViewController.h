@@ -16,5 +16,7 @@
 - (IBAction)cropGuantlet:(id)sender;
 - (IBAction)cropSword:(id)sender;
 - (IBAction)cropShoes:(id)sender;
+- (IBAction)scoreSheetToFacebook:(id)sender;
+- (IBAction)scoreSheetToTwitter:(id)sender;
 
 @end
